@@ -1,0 +1,18 @@
+---
+- hosts: all
+  become: true
+  tasks:
+  - name: Install calicoctl
+    shell: |
+      curl -o /usr/local/bin/calicoctl -L https://github.com/projectcalico/calicoctl/releases/download/v3.10.2/calicoctl-linux-amd64
+      chmod +x /usr/local/bin/calicoctl
+
+  - name: Install helm
+    shell: |
+      curl -O -L https://get.helm.sh/helm-v3.0.1-linux-amd64.tar.gz
+      tar zxvf helm-v3.0.1-linux-amd64.tar.gz
+      mv linux-amd64/helm /usr/local/bin
+      chmod +x /usr/local/bin/helm
+      rm -fr linux-amd64
+
+
